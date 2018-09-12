@@ -228,7 +228,6 @@ on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-    start mpdecision
 
 on property:sys.boot_completed=1
     # Enable Power modes
@@ -253,7 +252,6 @@ on property:sys.boot_completed=1
     write /sys/module/pm_8x60/modes/cpu1/retention/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu2/retention/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu3/retention/idle_enabled 1
-    start mpdecision
 
     # enable slimport detection
     write /sys/module/slimport/parameters/enable_irq 1
@@ -351,7 +349,6 @@ service mpdecision /system/bin/mpdecision --avg_comp --Nw=1:1.99 --Nw=2:2.99 --N
    class main
    user root
    group root system readproc
-   disabled
 
 service ssr_ramdump /system/bin/subsystem_ramdump -m -t emmc
     class main
